@@ -19,7 +19,7 @@ class SmallSMILHandler(ContentHandler):
 
         if name in self.tags:
             dicAttrs = {}
-            dicAttrs["element"] = name
+            dicAttrs["Tag"] = name
             for atribute in self.dicAttrs[name]:
                 dicAttrs[atribute] = attrs.get(atribute, "")
             self.tagsList.append(dicAttrs)
