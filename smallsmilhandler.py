@@ -33,4 +33,3 @@ if __name__ == "__main__":
     SmilHandler = SmallSMILHandler()
     parser.setContentHandler(SmilHandler)
     parser.parse(open('karaoke.smil'))
-    print(SmilHandler.get_tags())
