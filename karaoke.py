@@ -7,10 +7,12 @@ from xml.sax.handler import ContentHandler
 from smallsmilhandler import SmallSMILHandler
 
 def printElements(dicElements):
-    print(dicElements)
     for tags in dicElements:
-        for attrs in tags:
-            print(attrs)
+        attrs_list = []
+        for tag in tags:
+            if tag != 'Tag' and tags[tag] !='':
+                attrs_list += ('\t', tag, '=', '"', tags[tag], '"')
+        print(tags['Tag'], "".join(attrs_list))
 
 if __name__ == "__main__":
     try:
