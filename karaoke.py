@@ -6,6 +6,7 @@ import json
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 from smallsmilhandler import SmallSMILHandler
+from urllib.request import urlretrieve
 
 
 def printElements(dicElements):
@@ -24,7 +25,9 @@ def dowloandElements(dicElements):
     for tags in dicElements:
         for tag in tags:
             if tag == 'src' and tags[tag].startswith('http://'):
-                print(tags[tag])
+                location = tags[tag].split('/')[-1]
+                urlretrieve(tags[tag], location)
+                tags[tag] = location
 
 
 if __name__ == "__main__":
