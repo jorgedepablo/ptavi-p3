@@ -10,11 +10,11 @@ class SmallSMILHandler(ContentHandler):
     def __init__(self):
         self.tags = ['root-layout', 'region', 'img', 'audio', 'textstream']
         self.dicAttrs = {'root-layout': ['width', 'height',
-                                'background-color'],
-                                'region': ['id', 'top', 'left'],
-                                'img': ['src', 'region', 'begin', 'dur'],
-                                'audio': ['src', 'begin', 'dur'],
-                                'textstream': ['src', 'begin']}
+                         'background-color'],
+                         'region': ['id', 'top', 'left'],
+                         'img': ['src', 'region', 'begin', 'dur'],
+                         'audio': ['src', 'begin', 'dur'],
+                         'textstream': ['src', 'begin']}
         self.tagsList = []
 
     def startElement(self, name, attrs):
