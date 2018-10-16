@@ -2,9 +2,11 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import json
 from xml.sax import make_parser
 from xml.sax.handler import ContentHandler
 from smallsmilhandler import SmallSMILHandler
+
 
 def printElements(dicElements):
     for tags in dicElements:
@@ -13,6 +15,11 @@ def printElements(dicElements):
             if tag != 'Tag' and tags[tag] !='':
                 attrs_list += ('\t', tag, '=', '"', tags[tag], '"')
         print(tags['Tag'], "".join(attrs_list))
+
+def changeFormat(dicElements, fichsmil):
+    fichjson = fichsmil.split('.')[0] + '.json'
+    json.dump(dicElements, open(fichjson, 'w'))
+
 
 if __name__ == "__main__":
     try:
@@ -25,3 +32,4 @@ if __name__ == "__main__":
     parser.setContentHandler(SmilHandler)
     parser.parse(open(fichsmil))
     printElements(SmilHandler.get_tags())
+    changeFormat(SmilHandler.get_tags(), fichsmil)
