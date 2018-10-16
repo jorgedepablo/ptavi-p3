@@ -22,14 +22,14 @@ class KaraokeLocal():
         for tags in self.elements:
             attrs_list = []
             for tag in tags:
-                if tag != 'Tag' and tags[tag] !='':
+                if tag != 'Tag' and tags[tag] != '':
                     attrs_list += ('\t', tag, '=', '"', tags[tag], '"')
             print(tags['Tag'], "".join(attrs_list))
 
     def to_json(self, fichsmil, fichjson):
         if fichjson == '':
             fichjson = fichsmil.split('.')[0] + '.json'
-        json.dump(self.elements, open(fichjson, 'w'), separators=(',', ':'), indent=4)
+        json.dump(self.elements, open(fichjson, 'w'), indent=4)
 
     def do_local(self):
         for tags in self.elements:
