@@ -18,7 +18,13 @@ def printElements(dicElements):
 
 def changeFormat(dicElements, fichsmil):
     fichjson = fichsmil.split('.')[0] + '.json'
-    json.dump(dicElements, open(fichjson, 'w'))
+    json.dump(dicElements, open(fichjson, 'w'), separators=(',', ':'), indent=4)
+
+def dowloandElements(dicElements):
+    for tags in dicElements:
+        for tag in tags:
+            if tag == 'src' and tags[tag].startswith('http://'):
+                print(tags[tag])
 
 
 if __name__ == "__main__":
@@ -33,3 +39,4 @@ if __name__ == "__main__":
     parser.parse(open(fichsmil))
     printElements(SmilHandler.get_tags())
     changeFormat(SmilHandler.get_tags(), fichsmil)
+    dowloandElements(SmilHandler.get_tags())
